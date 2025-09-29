@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!--Add RSS auto-discovery-->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home - Smilodon Software</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Base Styles */
+            body {
+                font-family: "Courier New", Courier, monospace;
+                background: #0000fe;
+                color: #ffffff;
+                line-height: 1.4;
+                font-size: 16px;
+                overflow-x: hidden;
+            }
+
+            /* Navigation Header */
+            header {
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                padding: 1rem 0;
+            }
+
+            .nav-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                text-decoration: none;
+                color: var(--text-primary);
+                font-weight: 600;
+                font-size: 1.25rem;
+            }
+
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+                object-fit: contain;
+            }
+
+            /* Desktop Navigation */
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                color: var(--text-primary);
+                text-decoration: none;
+                padding: 0.5rem 0;
+                border-bottom: 2px solid transparent;
+                transition: all 0.2s;
+            }
+
+            .nav-links a:hover {
+                opacity: 0.7;
+                border-bottom-color: var(--text-primary);
+            }
+
+            /* Mobile Menu Button */
+            .mobile-menu-btn {
+                display: none;
+                background: none;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 4px;
+                padding: 0.5rem;
+                cursor: pointer;
+                color: var(--text-primary);
+                transition: all 0.2s;
+            }
+
+            .mobile-menu-btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            /* Mobile Navigation Drawer */
+            .mobile-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 0;
+            }
+
+            .mobile-nav.active {
+                display: block;
+            }
+
+            .mobile-nav a {
+                display: block;
+                padding: 0.75rem 1rem;
+                color: var(--text-primary);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-nav a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header with navigation -->
+        <header>
+            <div class="container">
+                <nav class="nav-wrapper">
+                    <a href="/" class="logo">
+                        <img
+                            src="assets/saberteeth.png"
+                            alt="Smilodon"
+                            class="logo-icon"
+                        />
+                        <span>Smilodon Software</span>
+                    </a>
+
+                    <!-- Desktop Navigation -->
+                    <div class="nav-links desktop-only">
+                        <a href="/">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#blog">Blog</a>
+                        <a href="#connect">Connect</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button
+                        class="mobile-menu-btn mobile-only"
+                        aria-label="Menu"
+                        aria-expanded="false"
+                    >
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                        >
+                            <path
+                                d="M3 12h18M3 6h18M3 18h18"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+                </nav>
+
+                <!-- Mobile Navigation Drawer -->
+                <div class="mobile-nav" id="mobile-nav">
+                    <a href="/">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#connect">Connect</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Brief about & contact section -->
+            <section></section>
+            <!-- Blog posts -->
+            <section>
+                <h2 class="section-title">Blog</h2>
+                <ul class="post-list">
+                    <li class="post-item">
+                        <time datetime="2025-01-22">22 Jan 2025</time>
+                        <a href="#" class="post-link">Blog posts coming soon...</a>
+                    </li>
+                </ul>/section>
+        </main>
+    </body>
+</html>
