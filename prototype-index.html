@@ -4,563 +4,126 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Smilodon Software</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            space: ["Space Grotesk", "sans-serif"],
+                        },
+                        colors: {
+                            "primary-blue": "#0000fe",
+                        },
+                        animation: {
+                            "fade-in": "fadeIn 0.3s ease-in",
+                        },
+                        keyframes: {
+                            fadeIn: {
+                                "0%": {
+                                    opacity: "0",
+                                    transform: "translateY(-100%)",
+                                },
+                                "100%": {
+                                    opacity: "1",
+                                    transform: "translateY(0)",
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
         <style>
-            /* Base Reset and Variables */
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+            /* Custom scrollbar styling and other non-Tailwind specific styles */
+            ::-webkit-scrollbar {
+                width: 8px;
             }
-
-            :root {
-                --bg-primary: #0000fe;
-                --text-primary: #ffffff;
-                --text-secondary: rgba(255, 255, 255, 0.9);
-                --border: rgba(255, 255, 255, 0.2);
-                --link: #ffffff;
-                --link-hover: rgba(255, 255, 255, 0.7);
-                --box-bg: #ffffff;
-                --box-text: #0000fe;
+            ::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
             }
-
-            /* Base Styles */
-            html {
-                scroll-behavior: smooth;
-            }
-
-            body {
-                font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-                             'Helvetica Neue', Arial, sans-serif;
-                background: var(--bg-primary);
-                color: var(--text-primary);
-                line-height: 1.6;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                font-size: 16px;
-                font-weight: 400;
-            }
-
-            .container {
-                max-width: 960px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-
-            /* Accessibility */
-            .sr-only {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                white-space: nowrap;
-                border-width: 0;
-            }
-
-            /* Navigation Header */
-            header {
-                background: var(--bg-primary);
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 100;
-                transform: translateY(-100%);
-                transition: transform 0.3s ease;
-                padding: 1rem 0;
-            }
-
-            header.visible {
-                transform: translateY(0);
-            }
-
-            .nav-wrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .logo {
-                display: flex;
-                align-items: center;
-                gap: 0;
-                text-decoration: none;
-                color: var(--text-primary);
-                font-weight: 700;
-                font-size: 1.25rem;
-                letter-spacing: 2px;
-                text-transform: uppercase;
-            }
-
-            .logo-icon {
-                width: 28px;
-                height: 28px;
-                object-fit: contain;
-                margin: 0 3px;
-            }
-
-            /* Desktop Navigation */
-            .nav-links {
-                display: flex;
-                gap: 2rem;
-            }
-
-            .nav-links a {
-                color: var(--text-primary);
-                text-decoration: none;
-                padding: 0.5rem 0;
-                border-bottom: 2px solid transparent;
-                transition: all 0.2s;
-            }
-
-            .nav-links a:hover {
-                opacity: 0.7;
-                border-bottom-color: var(--text-primary);
-            }
-
-            /* Mobile Menu Button */
-            .mobile-menu-btn {
-                display: none;
-                background: none;
-                border: 1px solid rgba(255, 255, 255, 0.3);
+            ::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.3);
                 border-radius: 4px;
-                padding: 0.5rem;
-                cursor: pointer;
-                color: var(--text-primary);
-                transition: all 0.2s;
             }
-
-            .mobile-menu-btn:hover {
-                background: rgba(255, 255, 255, 0.1);
-            }
-
-            /* Mobile Navigation Drawer */
-            .mobile-nav {
-                display: none;
-                position: absolute;
-                top: calc(100% + 1rem);
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                padding: 1rem 0;
-            }
-
-            .mobile-nav.active {
-                display: block;
-            }
-
-            .mobile-nav a {
-                display: block;
-                padding: 0.75rem 1rem;
-                color: var(--text-primary);
-                text-decoration: none;
-            }
-
-            .mobile-nav a:hover {
-                background: rgba(255, 255, 255, 0.1);
-            }
-
-            /* Hero Section */
-            .hero {
-                min-height: 85vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding: 3rem 0;
-            }
-
-            .hero-container {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .hero-logo {
-                width: 600px;
-                height: 600px;
-                position: relative;
-                opacity: 0.95;
-                max-width: 90vw;
-            }
-
-            .hero-logo img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-            }
-
-            .hero-title {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: var(--box-bg);
-                color: var(--box-text);
-                padding: 15px 30px;
-                border: 3px solid var(--box-bg);
-                z-index: 10;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            }
-
-            .hero-title h1 {
-                font-size: 3rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 7px;
-                margin: 0;
-            }
-
-            /* Subtle hover effect for hero box */
-            .hero-title {
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-            }
-
-            .hero-title:hover {
-                transform: translate(-50%, -50%) scale(1.02);
-                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-            }
-
-            /* Hero description text */
-            .hero-description {
-                margin-top: 3rem;
-                font-size: 1.125rem;
-                color: var(--text-primary);
-                opacity: 0.9;
-                letter-spacing: 1px;
-                font-weight: 400;
-                text-align: center;
-            }
-
-
-            /* Content Sections */
-            .section {
-                margin: 3rem 0;
-                padding: 0;
-            }
-
-            #connect {
-                margin-top: 4rem;
-            }
-
-            /* Constrained container for better readability */
-            .content-container {
-                max-width: 650px;
-                margin: 0 auto;
-                text-align: left;
-            }
-
-            /* White border styling for content sections - brutalist style */
-            .section-left .content-container {
-                background: var(--bg-primary);
-                color: var(--text-primary);
-                border: 3px solid var(--box-bg);
-                padding: 2rem;
-            }
-
-            .section-left .section-title {
-                color: var(--text-primary);
-            }
-
-            .section-left a {
-                color: var(--text-primary);
-                text-decoration: underline;
-            }
-
-            .section-left a:hover {
-                opacity: 0.7;
-            }
-
-            /* Ensure list items in bordered box are styled correctly */
-            .section-left .tech-list li::before {
-                color: var(--text-primary);
-            }
-
-            .section-left .content {
-                opacity: 0.9;
-            }
-
-            .section-left .post-item time {
-                opacity: 0.7;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.5rem;
-                display: inline-block;
-            }
-
-            .content {
-                opacity: 0.9;
-            }
-
-            .content p {
-                margin-bottom: 1rem;
-                line-height: 1.8;
-            }
-
-            /* Tech List */
-            .tech-list {
-                list-style: none;
-                padding: 0;
-                margin: 1rem 0;
-            }
-
-            .tech-list li {
-                padding: 0.25rem 0;
-                padding-left: 1.5rem;
-                position: relative;
-            }
-
-            .tech-list li::before {
-                content: "-";
-                position: absolute;
-                left: 0;
-            }
-
-            /* Contact Info - White border style */
-            #connect {
-                margin: 2rem auto;
-                max-width: 650px;
-            }
-
-            #connect .content-container {
-                background: var(--bg-primary);
-                color: var(--text-primary);
-                border: 3px solid var(--box-bg);
-                padding: 2rem;
-                text-align: center;
-            }
-
-            #connect .section-title {
-                color: var(--text-primary);
-                border-bottom-color: rgba(255, 255, 255, 0.3);
-                cursor: pointer;
-                padding-bottom: 0.5rem;
-                margin-bottom: 1.5rem;
-                transition: opacity 0.3s ease;
-            }
-
-            #connect .section-title:hover {
-                opacity: 0.8;
-            }
-
-            .contact-info a {
-                color: var(--text-primary);
-                text-decoration: underline;
-                font-size: 1.1rem;
-                transition: opacity 0.2s ease;
-            }
-
-            .contact-info a:hover {
-                opacity: 0.7;
-            }
-
-            /* Blog Posts */
-            .post-list {
-                list-style: none;
-                padding: 0;
-            }
-
-            .post-item {
-                display: flex;
-                gap: 2rem;
-                margin-bottom: 1rem;
-                padding: 0.5rem 0;
-                flex-direction: column;
-            }
-
-            .post-item time {
-                opacity: 0.7;
-                min-width: 120px;
-                font-size: 0.9rem;
-            }
-
-            .post-link {
-                color: var(--text-primary);
-                text-decoration: underline;
-            }
-
-            .post-link:hover {
-                opacity: 0.7;
-            }
-
-            /* Footer */
-            footer {
-                margin-top: auto;
-                padding: 3rem 0 2rem;
-                width: 100%;
-            }
-
-            .footer-content {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
-                text-align: center;
-                opacity: 0.8;
-            }
-
-            .footer-nav {
-                display: flex;
-                gap: 2rem;
-            }
-
-            .footer-nav a {
-                color: var(--text-primary);
-                text-decoration: none;
-                padding: 0.25rem;
-            }
-
-            .footer-nav a:hover {
-                text-decoration: underline;
-            }
-
-            /* Mobile Responsive Styles */
-            @media (max-width: 768px) {
-                body {
-                    font-size: 14px;
-                }
-
-                .desktop-only {
-                    display: none !important;
-                }
-
-                .mobile-menu-btn {
-                    display: block !important;
-                }
-
-                .section {
-                    margin: 1.5rem 0;
-                    padding: 1.5rem 0;
-                }
-
-                .section-left .content-container {
-                    padding: 1.5rem;
-                }
-
-                .hero {
-                    padding: 2rem 0;
-                    min-height: 80vh;
-                }
-
-                .hero-logo {
-                    width: 350px;
-                    height: 350px;
-                }
-
-                .hero-title h1 {
-                    font-size: 1.75rem;
-                    letter-spacing: 4px;
-                }
-
-                .hero-title {
-                    padding: 10px 20px;
-                    border-width: 2px;
-                }
-
-                .hero-description {
-                    margin-top: 2rem;
-                    font-size: 1rem;
-                    letter-spacing: 0.5px;
-                }
-
-                #connect .content-container {
-                    padding: 1.5rem;
-                }
-
-                #connect {
-                    margin-top: 2rem;
-                }
-
-                h1 {
-                    font-size: 1.75rem;
-                }
-                h2 {
-                    font-size: 1.25rem;
-                }
-            }
-
-            @media (min-width: 769px) {
-                .mobile-only {
-                    display: none !important;
-                }
-
-                .mobile-nav {
-                    display: none !important;
-                }
-
-
-                .post-item {
-                    flex-direction: row;
-                    align-items: baseline;
-                }
-
-                .footer-content {
-                    flex-direction: row;
-                    justify-content: space-between;
-                    text-align: left;
-                }
-            }
-
-            /* Touch Targets */
-            a,
-            button {
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
-            }
-
-            /* Responsive Images */
-            img {
-                max-width: 100%;
-                height: auto;
+            ::selection {
+                background: #ffffff;
+                color: #0000fe;
             }
         </style>
     </head>
-    <body>
+    <body
+        class="bg-primary-blue text-white font-space min-h-screen flex flex-col"
+    >
         <!-- Skip to content for accessibility -->
-        <a href="#main" class="sr-only">Skip to content</a>
+        <a
+            href="#main"
+            class="sr-only focus:not-sr-only focus:fixed focus:left-1 focus:top-1.5 focus:z-50 focus:bg-white focus:text-primary-blue focus:px-4 focus:py-2"
+        >
+            Skip to content
+        </a>
 
         <!-- Header with Navigation -->
-        <header>
-            <div class="container">
-                <nav class="nav-wrapper">
-                    <a href="/" class="logo">
+        <header
+            id="main-header"
+            class="group fixed top-0 left-0 right-0 z-50 bg-primary-blue -translate-y-full transition-transform duration-300 py-4"
+        >
+            <div class="max-w-5xl mx-auto px-5">
+                <nav class="flex justify-between items-center">
+                    <a
+                        href="/"
+                        class="flex items-center gap-0 text-white font-bold text-xl tracking-wider uppercase hover:opacity-80 transition-opacity"
+                        aria-current="page"
+                    >
                         <span>Smil</span>
                         <img
                             src="assets/saberteeth.png"
                             alt="O"
-                            class="logo-icon"
+                            class="w-7 h-7 object-contain mx-1"
                         />
                         <span>don</span>
                     </a>
 
                     <!-- Desktop Navigation -->
-                    <div class="nav-links desktop-only">
-                        <a href="/">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#connect">Connect</a>
+                    <div class="hidden sm:flex gap-8">
+                        <a
+                            href="/"
+                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
+                        >
+                            Home
+                        </a>
+                        <a
+                            href="#about"
+                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
+                        >
+                            About
+                        </a>
+                        <a
+                            href="#blog"
+                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
+                        >
+                            Blog
+                        </a>
+                        <a
+                            href="#connect"
+                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
+                        >
+                            Connect
+                        </a>
                     </div>
 
                     <!-- Mobile Menu Button -->
                     <button
-                        class="mobile-menu-btn mobile-only"
+                        class="sm:hidden p-2 border border-white/30 rounded hover:bg-white/10 transition-colors"
                         aria-label="Menu"
                         aria-expanded="false"
+                        id="toggle-navigation-menu"
                     >
                         <svg
                             width="24"
@@ -579,77 +142,175 @@
                 </nav>
 
                 <!-- Mobile Navigation Drawer -->
-                <div class="mobile-nav" id="mobile-nav">
-                    <a href="/">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#connect">Connect</a>
+                <div
+                    id="navigation-menu"
+                    class="hidden absolute top-full left-0 right-0 bg-primary-blue py-4 sm:hidden group-[.menu-open]:block"
+                    aria-label="Main menu"
+                >
+                    <a
+                        href="/"
+                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
+                    >
+                        Home
+                    </a>
+                    <a
+                        href="#about"
+                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
+                    >
+                        About
+                    </a>
+                    <a
+                        href="#blog"
+                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
+                    >
+                        Blog
+                    </a>
+                    <a
+                        href="#connect"
+                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
+                    >
+                        Connect
+                    </a>
                 </div>
             </div>
         </header>
 
         <!-- Main Content -->
-        <main id="main" class="container">
+        <main id="main" class="flex-1 max-w-5xl mx-auto px-5 w-full">
             <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-container">
-                    <div class="hero-logo">
-                        <img src="assets/saberteeth.png" alt="Smilodon Logo" />
-                        <div class="hero-title">
-                            <h1>Smilodon</h1>
+            <section
+                class="min-h-[85vh] flex flex-col justify-center items-center text-center py-12"
+            >
+                <div class="relative flex flex-col items-center justify-center">
+                    <div
+                        class="w-[600px] h-[600px] max-w-[90vw] relative opacity-95"
+                    >
+                        <img
+                            src="assets/saberteeth.png"
+                            alt="Smilodon Logo"
+                            class="w-full h-full object-contain"
+                        />
+                        <div
+                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-primary-blue px-8 py-4 border-4 border-white z-10 shadow-2xl hover:scale-105 hover:shadow-[0_15px_50px_rgba(0,0,0,0.3)] transition-all duration-200"
+                        >
+                            <h1
+                                class="text-5xl font-bold uppercase tracking-[7px] m-0 sm:text-3xl sm:tracking-[4px]"
+                            >
+                                Smilodon
+                            </h1>
                         </div>
                     </div>
-                    <p class="hero-description">Software & AI Engineering Consultancy</p>
+                    <p
+                        class="mt-12 text-lg text-white/90 tracking-wider font-normal text-center"
+                    >
+                        Software & AI Engineering Consultancy
+                    </p>
                 </div>
             </section>
 
-            <!-- Connect Section (moved up as requested) -->
-            <section id="connect" class="section">
-                <div class="content-container">
-                    <h2 class="section-title">Connect</h2>
-                    <div class="contact-info">
-                        <a href="mailto:admin@smilodonsoftware.co"
-                            >admin@smilodonsoftware.co</a
+            <!-- Connect Section -->
+            <section id="connect" class="my-12 sm:my-16">
+                <div
+                    class="max-w-[650px] mx-auto bg-primary-blue text-white border-4 border-white p-8 text-center"
+                >
+                    <h2
+                        class="text-2xl uppercase tracking-wider mb-6 pb-2 inline-block cursor-pointer hover:opacity-80 transition-opacity"
+                    >
+                        Connect
+                    </h2>
+                    <div>
+                        <a
+                            href="mailto:admin@smilodonsoftware.co"
+                            class="text-white underline text-lg hover:opacity-70 transition-opacity"
                         >
+                            admin@smilodonsoftware.co
+                        </a>
                     </div>
                 </div>
             </section>
 
             <!-- About Section -->
-            <section id="about" class="section section-left">
-                <div class="content-container">
-                    <h2 class="section-title">About</h2>
-                    <div class="content">
-                        <p>
+            <section id="about" class="my-12 sm:my-16">
+                <div
+                    class="max-w-[650px] mx-auto bg-primary-blue text-white border-4 border-white p-8"
+                >
+                    <h2
+                        class="text-2xl uppercase tracking-wider mb-6 pb-2 inline-block"
+                    >
+                        About
+                    </h2>
+                    <div class="opacity-90 space-y-4">
+                        <p class="leading-relaxed">
                             Building AI orchestration tools for small companies.
                             Helping clients get the most out of their tokens.
                             Writing some thoughts on technology and AI.
                         </p>
-                        <p>Preference for open-source and in-house tooling.</p>
-                        <p>Writing code in the following languages:</p>
-                        <ul class="tech-list">
-                            <li>Rust</li>
-                            <li>Go</li>
-                            <li>Python</li>
-                            <li>TypeScript</li>
+                        <p class="leading-relaxed">
+                            Preference for open-source and in-house tooling.
+                        </p>
+                        <p class="leading-relaxed">
+                            Writing code in the following languages:
+                        </p>
+                        <ul class="list-none space-y-1 my-4">
+                            <li
+                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
+                            >
+                                Rust
+                            </li>
+                            <li
+                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
+                            >
+                                Go
+                            </li>
+                            <li
+                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
+                            >
+                                Python
+                            </li>
+                            <li
+                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
+                            >
+                                TypeScript
+                            </li>
                         </ul>
-                        <p>
-                            Everyone needs inference - let us show you how to do it.
+                        <p class="leading-relaxed">
+                            Everyone needs inference - let us show you how to do
+                            it.
                         </p>
                     </div>
                 </div>
             </section>
 
             <!-- Blog Section -->
-            <section id="blog" class="section section-left">
-                <div class="content-container">
-                    <h2 class="section-title">Blog</h2>
-                    <ul class="post-list">
-                        <li class="post-item">
-                            <time datetime="2025-01-22">22 Jan 2025</time>
-                            <a href="#" class="post-link"
-                                >Blog posts coming soon...</a
+            <section
+                id="blog"
+                aria-label="Blog post list"
+                class="my-12 sm:my-16"
+            >
+                <div
+                    class="max-w-[650px] mx-auto bg-primary-blue text-white border-4 border-white p-8"
+                >
+                    <h2
+                        class="text-2xl uppercase tracking-wider mb-6 pb-2 inline-block"
+                    >
+                        Blog
+                    </h2>
+                    <ul class="space-y-4 sm:space-y-2">
+                        <li
+                            class="flex flex-col gap-2 sm:flex-row sm:gap-8 sm:items-baseline"
+                        >
+                            <time
+                                datetime="2025-01-22"
+                                class="text-sm opacity-70 min-w-[120px]"
                             >
+                                22 Jan 2025
+                            </time>
+                            <a
+                                href="#"
+                                class="text-white underline hover:opacity-70 transition-opacity"
+                            >
+                                Blog posts coming soon...
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -657,16 +318,20 @@
         </main>
 
         <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="copyright">
-                        Copyright 2025 Smilodon Software
-                    </div>
-                    <nav class="footer-nav">
-                        <a href="/">Home</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#about">About</a>
+        <footer class="mt-auto py-12 px-5">
+            <div class="max-w-5xl mx-auto">
+                <div
+                    class="flex flex-col sm:flex-row gap-4 items-center justify-between text-center sm:text-left opacity-80"
+                >
+                    <div>Copyright 2025 Smilodon Software</div>
+                    <nav class="flex gap-8">
+                        <a href="/" class="text-white hover:underline">Home</a>
+                        <a href="#blog" class="text-white hover:underline"
+                            >Blog</a
+                        >
+                        <a href="#about" class="text-white hover:underline"
+                            >About</a
+                        >
                     </nav>
                 </div>
             </div>
@@ -675,21 +340,26 @@
         <script>
             // Mobile menu toggle functionality
             document.addEventListener("DOMContentLoaded", function () {
-                const menuBtn = document.querySelector(".mobile-menu-btn");
-                const mobileNav = document.querySelector(".mobile-nav");
+                const menuBtn = document.getElementById(
+                    "toggle-navigation-menu",
+                );
+                const header = document.getElementById("main-header");
+                const mobileNav = document.getElementById("navigation-menu");
 
                 if (menuBtn) {
                     menuBtn.addEventListener("click", function () {
-                        const isOpen = mobileNav.classList.toggle("active");
+                        header.classList.toggle("menu-open");
+                        const isOpen = header.classList.contains("menu-open");
                         menuBtn.setAttribute("aria-expanded", isOpen);
                     });
                 }
 
                 // Close menu when clicking links
-                const mobileLinks = document.querySelectorAll(".mobile-nav a");
+                const mobileLinks =
+                    document.querySelectorAll("#navigation-menu a");
                 mobileLinks.forEach((link) => {
                     link.addEventListener("click", () => {
-                        mobileNav.classList.remove("active");
+                        header.classList.remove("menu-open");
                         menuBtn.setAttribute("aria-expanded", "false");
                     });
                 });
@@ -700,22 +370,21 @@
                         !menuBtn.contains(e.target) &&
                         !mobileNav.contains(e.target)
                     ) {
-                        mobileNav.classList.remove("active");
+                        header.classList.remove("menu-open");
                         menuBtn.setAttribute("aria-expanded", "false");
                     }
                 });
 
                 // Header scroll visibility
-                const header = document.querySelector("header");
                 let scrollThreshold = 100; // Show header after scrolling 100px
 
                 function handleScroll() {
                     const currentScrollY = window.scrollY;
 
                     if (currentScrollY > scrollThreshold) {
-                        header.classList.add("visible");
+                        header.classList.add("!translate-y-0");
                     } else {
-                        header.classList.remove("visible");
+                        header.classList.remove("!translate-y-0");
                     }
                 }
 
@@ -732,9 +401,7 @@
                 handleScroll();
 
                 // Smooth scroll for Connect heading click
-                const connectTitle = document.querySelector(
-                    "#connect .section-title",
-                );
+                const connectTitle = document.querySelector("#connect h2");
                 if (connectTitle) {
                     connectTitle.addEventListener("click", function (e) {
                         e.preventDefault();
@@ -750,6 +417,9 @@
                 // Enable smooth scrolling for all anchor links
                 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
                     anchor.addEventListener("click", function (e) {
+                        // Skip if it's the skip-to-content link
+                        if (this.classList.contains("sr-only")) return;
+
                         e.preventDefault();
                         const target = document.querySelector(
                             this.getAttribute("href"),
@@ -757,7 +427,7 @@
                         if (target) {
                             target.scrollIntoView({
                                 behavior: "smooth",
-                                block: "center",
+                                block: "start",
                             });
                         }
                     });
