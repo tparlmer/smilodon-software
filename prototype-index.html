@@ -17,50 +17,145 @@
                     extend: {
                         fontFamily: {
                             space: ["Space Grotesk", "sans-serif"],
+                            mono: ["Courier New", "monospace"],
                         },
                         colors: {
                             "primary-blue": "#0000fe",
-                        },
-                        animation: {
-                            "fade-in": "fadeIn 0.3s ease-in",
-                        },
-                        keyframes: {
-                            fadeIn: {
-                                "0%": {
-                                    opacity: "0",
-                                    transform: "translateY(-100%)",
-                                },
-                                "100%": {
-                                    opacity: "1",
-                                    transform: "translateY(0)",
-                                },
-                            },
+                            "dos-yellow": "#ffff55",
+                            "dos-cyan": "#55ffff",
                         },
                     },
                 },
             };
         </script>
         <style>
-            /* Custom scrollbar styling and other non-Tailwind specific styles */
-            ::-webkit-scrollbar {
-                width: 8px;
+            /* Base styles */
+            body {
+                font-family: "Space Grotesk", sans-serif;
             }
-            ::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.1);
+
+            /* Remove all animations */
+            * {
+                animation: none !important;
+                transition: none !important;
             }
-            ::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 4px;
+
+            /* Blinking cursor */
+            .cursor {
+                display: inline-block;
+                width: 2px;
+                height: 2.5rem;
+                background: #0000fe;
+                margin-left: 8px;
+                animation: blink 1s steps(2, start) infinite !important;
+                vertical-align: text-bottom;
             }
-            ::selection {
+
+            @keyframes blink {
+                to {
+                    opacity: 0;
+                }
+            }
+
+            /* Logo frame styling */
+            .logo-frame {
+                position: relative;
+                width: 500px;
+                height: 500px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .logo-frame::before {
+                content: "";
+                position: absolute;
+                top: -20px;
+                left: -20px;
+                right: -20px;
+                bottom: -20px;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                pointer-events: none;
+            }
+
+            .logo-image {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                opacity: 0.95;
+            }
+
+            /* Terminal-style title overlay */
+            .title-terminal {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 background: #ffffff;
                 color: #0000fe;
+                padding: 15px 35px;
+                border: 3px solid #ffffff;
+                z-index: 10;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            }
+
+            .title-terminal h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 7px;
+                margin: 0;
+                display: inline;
+            }
+
+            /* Subtitle with brackets */
+            .subtitle-bracket {
+                margin-top: 2.5rem;
+                font-size: 1.125rem;
+                color: #ffffff;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                font-weight: 500;
+                text-align: center;
+            }
+
+            .bracket {
+                color: #ffff55;
+                font-family: "Courier New", monospace;
+                font-weight: 400;
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+                .logo-frame {
+                    width: 300px;
+                    height: 300px;
+                }
+
+                .title-terminal h1 {
+                    font-size: 1.75rem;
+                    letter-spacing: 4px;
+                }
+
+                .title-terminal {
+                    padding: 10px 20px;
+                    border-width: 2px;
+                }
+
+                .cursor {
+                    height: 1.5rem;
+                    width: 1.5px;
+                    margin-left: 4px;
+                }
+
+                .subtitle-bracket {
+                    font-size: 0.875rem;
+                    margin-top: 1.5rem;
+                }
             }
         </style>
     </head>
-    <body
-        class="bg-primary-blue text-white font-space min-h-screen flex flex-col"
-    >
+    <body class="bg-primary-blue text-white font-space min-h-screen">
         <!-- Skip to content for accessibility -->
         <a
             href="#main"
@@ -69,370 +164,62 @@
             Skip to content
         </a>
 
-        <!-- Header with Navigation -->
-        <header
-            id="main-header"
-            class="group fixed top-0 left-0 right-0 z-50 bg-primary-blue -translate-y-full transition-transform duration-300 py-4"
-        >
-            <div class="max-w-5xl mx-auto px-5">
-                <nav class="flex justify-between items-center">
-                    <a
-                        href="/"
-                        class="flex items-center gap-0 text-white font-bold text-xl tracking-wider uppercase hover:opacity-80 transition-opacity"
-                        aria-current="page"
-                    >
-                        <span>Smil</span>
-                        <img
-                            src="assets/saberteeth.png"
-                            alt="O"
-                            class="w-7 h-7 object-contain mx-1"
-                        />
-                        <span>don</span>
-                    </a>
-
-                    <!-- Desktop Navigation -->
-                    <div class="hidden sm:flex gap-8">
-                        <a
-                            href="/"
-                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
-                        >
-                            Home
-                        </a>
-                        <a
-                            href="#about"
-                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
-                        >
-                            About
-                        </a>
-                        <a
-                            href="#blog"
-                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
-                        >
-                            Blog
-                        </a>
-                        <a
-                            href="#connect"
-                            class="text-white py-2 border-b-2 border-transparent hover:opacity-70 hover:border-white transition-all duration-200"
-                        >
-                            Connect
-                        </a>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <button
-                        class="sm:hidden p-2 border border-white/30 rounded hover:bg-white/10 transition-colors"
-                        aria-label="Menu"
-                        aria-expanded="false"
-                        id="toggle-navigation-menu"
-                    >
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                        >
-                            <path
-                                d="M3 12h18M3 6h18M3 18h18"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </button>
-                </nav>
-
-                <!-- Mobile Navigation Drawer -->
-                <div
-                    id="navigation-menu"
-                    class="hidden absolute top-full left-0 right-0 bg-primary-blue py-4 sm:hidden group-[.menu-open]:block"
-                    aria-label="Main menu"
-                >
-                    <a
-                        href="/"
-                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
-                    >
-                        Home
-                    </a>
-                    <a
-                        href="#about"
-                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
-                    >
-                        About
-                    </a>
-                    <a
-                        href="#blog"
-                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
-                    >
-                        Blog
-                    </a>
-                    <a
-                        href="#connect"
-                        class="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
-                    >
-                        Connect
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main id="main" class="flex-1 max-w-5xl mx-auto px-5 w-full">
-            <!-- Hero Section -->
-            <section
-                class="min-h-[85vh] flex flex-col justify-center items-center text-center py-12"
+        <!-- Main container using flexbox -->
+        <div id="main" class="flex flex-col md:flex-row min-h-screen">
+            <!-- Navigation Section (Left on desktop, second on mobile) -->
+            <nav
+                class="flex-1 flex flex-col justify-center items-center md:items-start px-8 md:px-16 lg:px-24 py-12 md:py-0 order-2 md:order-1"
             >
-                <div class="relative flex flex-col items-center justify-center">
-                    <div
-                        class="w-[600px] h-[600px] max-w-[90vw] relative opacity-95"
-                    >
-                        <img
-                            src="assets/saberteeth.png"
-                            alt="Smilodon Logo"
-                            class="w-full h-full object-contain"
-                        />
-                        <div
-                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-primary-blue px-8 py-4 border-4 border-white z-10 shadow-2xl hover:scale-105 hover:shadow-[0_15px_50px_rgba(0,0,0,0.3)] transition-all duration-200"
-                        >
-                            <h1
-                                class="text-5xl font-bold uppercase tracking-[7px] m-0 sm:text-3xl sm:tracking-[4px]"
-                            >
-                                Smilodon
-                            </h1>
-                        </div>
-                    </div>
-                    <p
-                        class="mt-12 text-lg text-white/90 tracking-wider font-normal text-center"
-                    >
-                        Software & AI Engineering Consultancy
-                    </p>
-                </div>
-            </section>
-
-            <!-- Connect Section -->
-            <section id="connect" class="my-12 sm:my-16">
-                <div
-                    class="max-w-[650px] mx-auto bg-primary-blue text-white border-4 border-white p-8 text-center"
-                >
-                    <h2
-                        class="text-2xl uppercase tracking-wider mb-6 pb-2 inline-block cursor-pointer hover:opacity-80 transition-opacity"
-                    >
-                        Connect
-                    </h2>
-                    <div>
-                        <a
-                            href="mailto:admin@smilodonsoftware.co"
-                            class="text-white underline text-lg hover:opacity-70 transition-opacity"
-                        >
-                            admin@smilodonsoftware.co
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About Section -->
-            <section id="about" class="my-12 sm:my-16">
-                <div
-                    class="max-w-[650px] mx-auto bg-primary-blue text-white border-4 border-white p-8"
-                >
-                    <h2
-                        class="text-2xl uppercase tracking-wider mb-6 pb-2 inline-block"
-                    >
-                        About
-                    </h2>
-                    <div class="opacity-90 space-y-4">
-                        <p class="leading-relaxed">
-                            Building AI orchestration tools for small companies.
-                            Helping clients get the most out of their tokens.
-                            Writing some thoughts on technology and AI.
-                        </p>
-                        <p class="leading-relaxed">
-                            Preference for open-source and in-house tooling.
-                        </p>
-                        <p class="leading-relaxed">
-                            Writing code in the following languages:
-                        </p>
-                        <ul class="list-none space-y-1 my-4">
-                            <li
-                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
-                            >
-                                Rust
-                            </li>
-                            <li
-                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
-                            >
-                                Go
-                            </li>
-                            <li
-                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
-                            >
-                                Python
-                            </li>
-                            <li
-                                class="pl-6 relative before:content-['-'] before:absolute before:left-0"
-                            >
-                                TypeScript
-                            </li>
-                        </ul>
-                        <p class="leading-relaxed">
-                            Everyone needs inference - let us show you how to do
-                            it.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Blog Section -->
-            <section
-                id="blog"
-                aria-label="Blog post list"
-                class="my-12 sm:my-16"
-            >
-                <div
-                    class="max-w-[650px] mx-auto bg-primary-blue text-white border-4 border-white p-8"
-                >
-                    <h2
-                        class="text-2xl uppercase tracking-wider mb-6 pb-2 inline-block"
-                    >
-                        Blog
-                    </h2>
-                    <ul class="space-y-4 sm:space-y-2">
-                        <li
-                            class="flex flex-col gap-2 sm:flex-row sm:gap-8 sm:items-baseline"
-                        >
-                            <time
-                                datetime="2025-01-22"
-                                class="text-sm opacity-70 min-w-[120px]"
-                            >
-                                22 Jan 2025
-                            </time>
+                <div class="text-center md:text-left">
+                    <ul class="space-y-6">
+                        <li>
                             <a
-                                href="#"
-                                class="text-white underline hover:opacity-70 transition-opacity"
+                                href="/about"
+                                class="text-2xl md:text-3xl font-medium uppercase tracking-wider inline-block"
                             >
-                                Blog posts coming soon...
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/contact"
+                                class="text-2xl md:text-3xl font-medium uppercase tracking-wider inline-block"
+                            >
+                                Contact
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/blog"
+                                class="text-2xl md:text-3xl font-medium uppercase tracking-wider inline-block"
+                            >
+                                Blog
                             </a>
                         </li>
                     </ul>
                 </div>
-            </section>
-        </main>
+            </nav>
 
-        <!-- Footer -->
-        <footer class="mt-auto py-12 px-5">
-            <div class="max-w-5xl mx-auto">
-                <div
-                    class="flex flex-col sm:flex-row gap-4 items-center justify-between text-center sm:text-left opacity-80"
-                >
-                    <div>Copyright 2025 Smilodon Software</div>
-                    <nav class="flex gap-8">
-                        <a href="/" class="text-white hover:underline">Home</a>
-                        <a href="#blog" class="text-white hover:underline"
-                            >Blog</a
-                        >
-                        <a href="#about" class="text-white hover:underline"
-                            >About</a
-                        >
-                    </nav>
+            <!-- Logo Section (Right on desktop, first on mobile) -->
+            <div
+                class="flex-1 flex flex-col items-center justify-center p-8 md:p-12 order-1 md:order-2 min-h-[40vh] md:min-h-screen"
+            >
+                <div class="relative">
+                    <div class="logo-frame">
+                        <img
+                            src="assets/saberteeth.png"
+                            alt="Smilodon Logo"
+                            class="logo-image"
+                        />
+                        <div class="title-terminal">
+                            <h1>SMILODON</h1><span class="cursor"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="subtitle-bracket">
+                    <span class="bracket">[</span>SOFTWARE & AI ENGINEERING<span class="bracket">]</span>
                 </div>
             </div>
-        </footer>
-
-        <script>
-            // Mobile menu toggle functionality
-            document.addEventListener("DOMContentLoaded", function () {
-                const menuBtn = document.getElementById(
-                    "toggle-navigation-menu",
-                );
-                const header = document.getElementById("main-header");
-                const mobileNav = document.getElementById("navigation-menu");
-
-                if (menuBtn) {
-                    menuBtn.addEventListener("click", function () {
-                        header.classList.toggle("menu-open");
-                        const isOpen = header.classList.contains("menu-open");
-                        menuBtn.setAttribute("aria-expanded", isOpen);
-                    });
-                }
-
-                // Close menu when clicking links
-                const mobileLinks =
-                    document.querySelectorAll("#navigation-menu a");
-                mobileLinks.forEach((link) => {
-                    link.addEventListener("click", () => {
-                        header.classList.remove("menu-open");
-                        menuBtn.setAttribute("aria-expanded", "false");
-                    });
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener("click", (e) => {
-                    if (
-                        !menuBtn.contains(e.target) &&
-                        !mobileNav.contains(e.target)
-                    ) {
-                        header.classList.remove("menu-open");
-                        menuBtn.setAttribute("aria-expanded", "false");
-                    }
-                });
-
-                // Header scroll visibility
-                let scrollThreshold = 100; // Show header after scrolling 100px
-
-                function handleScroll() {
-                    const currentScrollY = window.scrollY;
-
-                    if (currentScrollY > scrollThreshold) {
-                        header.classList.add("!translate-y-0");
-                    } else {
-                        header.classList.remove("!translate-y-0");
-                    }
-                }
-
-                // Debounce scroll events for better performance
-                let scrollTimer;
-                window.addEventListener("scroll", () => {
-                    if (scrollTimer) {
-                        clearTimeout(scrollTimer);
-                    }
-                    scrollTimer = setTimeout(handleScroll, 10);
-                });
-
-                // Initial check
-                handleScroll();
-
-                // Smooth scroll for Connect heading click
-                const connectTitle = document.querySelector("#connect h2");
-                if (connectTitle) {
-                    connectTitle.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        const connectSection =
-                            document.querySelector("#connect");
-                        connectSection.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                        });
-                    });
-                }
-
-                // Enable smooth scrolling for all anchor links
-                document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                    anchor.addEventListener("click", function (e) {
-                        // Skip if it's the skip-to-content link
-                        if (this.classList.contains("sr-only")) return;
-
-                        e.preventDefault();
-                        const target = document.querySelector(
-                            this.getAttribute("href"),
-                        );
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start",
-                            });
-                        }
-                    });
-                });
-            });
-        </script>
+        </div>
     </body>
 </html>
