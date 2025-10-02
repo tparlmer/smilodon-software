@@ -1,0 +1,19 @@
+title: Smilodon Software
+description: Website for Smilodon Software client acquisition and blog
+baseurl: ""
+url: "https://tparlmer.github.io"
+
+markdown: kramdown
+highlighter: rouge
+
+permalink: /:title
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title
+
+exclude:
+  - SPEC.md
+  - README.md
+  - CHANGELOG.md

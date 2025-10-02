@@ -1,13 +1,27 @@
----
-layout: default
-title: Home
----
-
-<div class="splash-container">
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home | Smilodon Software</title>
+        <link
+            rel="stylesheet"
+            href="/assets/css/style.css"
+        />
+    </head>
+    <body>
+        <nav>
+    <div class="container">
+        <a href="/">Home</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
+    </div>
+</nav>
+ <div class="splash-container">
     <!-- Left Column (Sticky) -->
     <div class="splash-left">
         <!--<img
-            src="{{ '/assets/saberteeth.png' | relative_url }}"
+            src="/assets/saberteeth.png"
             alt="Smilodon Software"
             class="splash-logo"
         />-->
@@ -63,17 +77,17 @@ title: Home
         <!-- Writing Section -->
         <section class="recent-posts">
             <h2><span class="md-hash">##</span> Posts</h2>
-            {% for post in site.posts limit:3 %}
+            
             <article class="post-preview">
                 <h3>
-                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    <a href="/blog/test-blog-post">Test Blog Post</a>
                 </h3>
-                <time>{{ post.date | date: "%B %d, %Y" }}</time>
-                <p>{{ post.excerpt }}</p>
+                <time>October 02, 2025</time>
+                <p>Introducing our new ebsite and blog</p>
             </article>
-            {% endfor %}
+            
 
-            <a href="{{ '/blog.html' | relative_url }}" class="view-all">
+            <a href="/blog.html" class="view-all">
                 View all posts →
             </a>
         </section>
@@ -81,3 +95,11 @@ title: Home
         <!-- END Right Column -->
     </div>
 </div>
+ <footer>
+    <div class="container">
+        <p>&copy; 2025 Smilodon Software</p>
+    </div>
+</footer>
+
+    </body>
+</html>
