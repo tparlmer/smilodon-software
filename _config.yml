@@ -3,6 +3,8 @@ description: Website for Smilodon Software client acquisition and blog
 baseurl: ""
 url: "https://tparlmer.github.io"
 
+theme: null
+
 markdown: kramdown
 highlighter: rouge
 
