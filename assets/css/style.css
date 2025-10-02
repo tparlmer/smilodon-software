@@ -1,69 +1,79 @@
-/* === RESET & BASE === */
+---
+---
+
+/* === RESET === */
 * {
-    margin: 0; /* increase this to narrow viewport */
-    padding: 0; /* increase this to narrow viewport */
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+/* === BASE === */
 body {
     font-family:
         "Inter",
         -apple-system,
+        BlinkMacSystemFont,
         sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #2e2e2e;
-    background-color: #fff8f0; /* cream blush */
-
-    /*background-color: #faf8f3;*/
-    /* newspaper print */
-    /*background-color: #f5f5f0;*/
-
-    /* soft cream NO */
-    /*background-color: #f4f1ea;*/
-
-    /* warm linen NO */
-    /*background-color: #fef8f3;*/
-
-    /* seashell */
-    /*background-color: #fff5ee;*/
+    background-color: #fff8f0;
 }
 
 /* === TYPOGRAPHY === */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-bottom: 1rem;
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 1.75rem;
     font-weight: 600;
     line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
 }
 
 p {
     margin-bottom: 1rem;
+    font-size: 1.05rem;
 }
 
 a {
     color: #2e2e2e;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: #ff006e;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
 }
 
 a:hover {
-    background: #ff006e; /* remove if obnixious */
-    text-decoration: underline;
+    color: #ff006e;
 }
-/* === MARKDOWN AESTHETIC === */
 
-/* Markdown hash symbols (#, ##, ###) */
+time {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* === MARKDOWN SYNTAX === */
 .md-hash {
-    color: #999999;
+    color: #aaa;
     font-weight: 400;
     margin-right: 0.5rem;
-    user-select: none; /* Can't select the # symbols when copying */
+    user-select: none;
 }
 
-/* Markdown bullet symbols (>) */
 .md-bullet {
     color: #ff006e;
     font-weight: 500;
@@ -71,270 +81,156 @@ a:hover {
     user-select: none;
 }
 
-/* Tagline paragraphs */
-.splash-tagline p {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    line-height: 1.5;
+/* === LAYOUT === */
+.page-container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 4rem 2rem 4rem 2rem;
+    position: relative;
 }
 
-/* === LAYOUT === */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1rem;
+/* Watermark removed */
+
+/* === HERO === */
+.hero {
+    margin-bottom: 6rem;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+.tagline p {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    color: #2e2e2e;
+    background: transparent;
+    text-decoration: none;
+    border: 2px solid #ff006e;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+}
+
+.cta:hover {
+    background: #ff006e;
+    color: #fff;
+}
+
+/* === CONTENT SECTIONS === */
+.content-section {
+    margin-bottom: 3.5rem;
+}
+
+/* === POSTS === */
+.post-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(46, 46, 46, 0.1);
+}
+
+.post-item:last-of-type {
+    border-bottom: none;
+}
+
+.post-item h3 a {
+    text-decoration: none;
+}
+
+.post-item h3 a:hover {
+    color: #ff006e;
+}
+
+.post-item time {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.link-arrow {
+    font-weight: 500;
 }
 
 /* === NAVIGATION === */
 nav {
-    padding: 1rem 0;
-    border-bottom: 1px solid #2e2e2e;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(46, 46, 46, 0.1);
 }
 
 nav a {
     margin-right: 1.5rem;
-}
-
-/* === SPLASH PAGE (TWO-COLUMN LAYOUT) === */
-
-.splash-container {
-    position: relative;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    min-height: 100vh;
-    gap: 6rem;
-    padding: 6rem 4rem; /* more cushion on sides */
-    max-width: 1200px; /* narrower viewport, more centered */
-    margin: 0 auto;
-}
-
-/* Giant Logo Watermark Background */
-.splash-container::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1200px;
-    height: 1200px;
-    background-image: url("/assets/saberteeth.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.08;
-    z-index: 0;
-    pointer-events: none; /* Can't interact with it */
-}
-
-/* Left Column - Sticky */
-.splash-left {
-    position: sticky;
-    top: 4rem;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-/* Brand Lockup - Logo + Title Horizontal */
-.brand-lockup {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.logo-inline {
-    width: 70px;
-    height: 70px;
-    flex-shrink: 0; /* Prevents logo from squishing */
-}
-
-/*.splash-logo {
-    max-width: 200px;
-    margin-bottom: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}*/
-
-.splash-title {
-    font-size: 2.75rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #2e2e2e;
-    margin: 0;
-    /*margin-bottom: 0;*/
-    line-height: 1.1;
-}
-
-.splash-tagline {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: #2e2e2e;
-    margin-top: 1rem;
-}
-
-.splash-cta {
-    background: #2e2e2e;
-    color: #ffffff;
-    border: 2px solid #ff006e;
-    padding: 0.875rem 1.75rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-block;
-    text-align: left;
-    transition: all 0.2s ease;
-    margin-top: 1rem;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-.splash-cta:hover {
-    background: #ff006e;
-    color: #ffffff;
-    border-color: #ff006e;
     text-decoration: none;
 }
 
-/* Right Column - Scrollable */
-.splash-right {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-}
-
-.about-brief h2,
-.recent-posts h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: #2e2e2e;
-}
-
-.about-brief p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #2e2e2e;
-}
-
-/* Recent Posts Styling */
-.post-preview {
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid rgba(46, 46, 46, 0.15);
-}
-
-.post-preview:last-of-type {
-    border-bottom: none;
-}
-
-.post-preview h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.post-preview h3 a {
-    color: #2e2e2e;
-    text-decoration: none;
-}
-
-.post-preview h3 a:hover {
+nav a:hover {
     color: #ff006e;
-    background: none;
-    text-decoration: underline;
 }
 
-.post-preview time {
+/* === FOOTER === */
+footer {
+    margin-top: 6rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(46, 46, 46, 0.1);
+    text-align: center;
     font-size: 0.9rem;
-    color: #2e2e2e;
-    display: block;
-    margin-bottom: 0.75rem;
-}
-
-.post-preview p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #2e2e2e;
-}
-
-.view-all {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #2e2e2e;
-    text-decoration: none;
-    border-bottom: 2px solid #ff006e;
-    display: inline-block;
-    padding-bottom: 2px;
-}
-
-.view-all:hover {
-    background: #ff006e;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    color: #666;
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-    body {
-        font-size: 16px;
+    h1 {
+        font-size: 2.25rem;
     }
 
-    .splash-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 2rem 1.5rem;
+    h2 {
+        font-size: 1.5rem;
     }
 
-    .splash-left {
-        position: static;
-        gap: 1.5rem;
+    .page-container {
+        padding: 4rem 1.5rem 2rem 1.5rem;
     }
 
-    .splash-logo {
-        max-width: 150px;
-    }
-
-    .splash-nav {
-        flex-direction: row;
-        gap: 1.5rem;
-    }
-
-    .splash-tagline {
-        font-size: 1.1rem;
-    }
-
-    .about-brief h2,
-    .recent-posts h2 {
-        font-size: 1.25rem;
+    .page-container::before {
+        width: 500px;
+        height: 500px;
+        opacity: 0.04;
     }
 }
 
-/* === BLOG LISTING === */
+/* === BLOG LISTING PAGE === */
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
 .post-list article {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #2e2e2e;
+    border-bottom: 1px solid rgba(46, 46, 46, 0.1);
 }
 
-/* === BLOG POST === */
+/* === BLOG POST PAGE === */
 .post-header {
     margin-bottom: 2rem;
 }
 
 .post-content {
-    /* Will add typography here */
+    font-size: 1.05rem;
+    line-height: 1.8;
 }
 
-/* === FOOTER === */
-footer {
-    margin-top: 4rem;
-    padding: 2rem 0;
-    border-top: 1px solid #2e2e2e;
-    text-align: center;
-    color: #2e2e2e;
+.post-content h2 {
+    margin-top: 2rem;
+}
+
+.post-content h3 {
+    margin-top: 1.5rem;
 }

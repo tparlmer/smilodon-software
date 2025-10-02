@@ -3,81 +3,66 @@ layout: default
 title: Home
 ---
 
-<div class="splash-container">
-    <!-- Left Column (Sticky) -->
-    <div class="splash-left">
-        <!--<img
-            src="{{ '/assets/saberteeth.png' | relative_url }}"
-            alt="Smilodon Software"
-            class="splash-logo"
-        />-->
+<div class="page-container">
+    <section class="hero">
+        <h1 class="title"><span class="md-hash">#</span> Smilodon Software</h1>
 
-        <!--<div class="brand-lockup">
-            </div>-->
-
-        <h1 class="splash-title"><span class="md-hash">#</span> Smilodon</h1>
-
-        <div class="splash-tagline">
+        <div class="tagline">
             <p><span class="md-bullet">></span> Bleeding edge AI expertise</p>
             <p>
                 <span class="md-bullet">></span> High performance software
                 engineering
             </p>
-            <p>
-                <span class="md-bullet">></span> Deeply researched thought
-                leadership
-            </p>
+            <p><span class="md-bullet">></span> Insights and research</p>
         </div>
 
-        <a href="https://calendly.com/your-link" class="splash-cta">
-            Schedule a Call >>>
-        </a>
-    </div>
-    <!-- END Left Column -->
+        <a href="https://calendly.com/your-link" class="cta"
+            >Schedule a call >>></a
+        >
+    </section>
 
-    <!-- Right Column (Scrollable) -->
-    <div class="splash-right">
-        <!-- Services Section -->
-        <section class="about-brief">
-            <h2><span class="md-hash">##</span> Expertise</h2>
-            <p>
-                We build unique and powerful software with our clients using
-                human ingenuity and AI horsepower.
-            </p>
-            <p>
-                We specialize in AI code generation infrastructure, fast
-                server-side web applications, and antifragile software design.
-            </p>
+    <section class="content-section">
+        <h2><span class="md-hash">##</span> Expertise</h2>
+        <p>
+            We build unique and powerful software with our clients using human
+            ingenuity and AI horsepower.
+        </p>
+        <p>
+            We specialize in AI code generation infrastructure, fast server-side
+            web applications, and antifragile software design.
+        </p>
+    </section>
 
-            <h2><span class="md-hash">##</span> Code</h2>
-            <p>
-                Most of our work is in Go, but we are also familiar with Python and Typescript.
-            </p>
+    <section class="content-section">
+        <h2><span class="md-hash">##</span> Code</h2>
+        <p>Go, Typescript, Python</p>
+    </section>
 
-            <h2><span class="md-hash">##</span> Contact</h2>
-            <p>
-                If you are interested in working together schedule a call with us or send us an email.
-            </p>
-        </section>
+    <section class="content-section">
+        <h2><span class="md-hash">##</span> Contact</h2>
+        <p>
+            If you are interested in working together
+            <a href="https://calendly.com/your-link">schedule a call</a> or
+            email us at
+            <a href="mailto:admin@smilodonsoftware.co"
+                >admin@smilodonsoftware.co</a
+            >.
+        </p>
+    </section>
 
-        <!-- Writing Section -->
-        <section class="recent-posts">
-            <h2><span class="md-hash">##</span> Posts</h2>
-            {% for post in site.posts limit:3 %}
-            <article class="post-preview">
-                <h3>
-                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                </h3>
-                <time>{{ post.date | date: "%B %d, %Y" }}</time>
-                <p>{{ post.excerpt }}</p>
-            </article>
-            {% endfor %}
-
-            <a href="{{ '/blog.html' | relative_url }}" class="view-all">
-                View all posts →
-            </a>
-        </section>
-    </div>
-        <!-- END Right Column -->
-    </div>
+    <section class="content-section">
+        <h2><span class="md-hash">##</span> Thoughts</h2>
+        {% for post in site.posts limit:3 %}
+        <article class="post-item">
+            <h3>
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <time>{{ post.date | date: "%B %d, %Y" }}</time>
+            <p>{{ post.excerpt }}</p>
+        </article>
+        {% endfor %}
+        <a href="{{ '/blog.html' | relative_url }}" class="link-arrow"
+            >View all posts →</a
+        >
+    </section>
 </div>
