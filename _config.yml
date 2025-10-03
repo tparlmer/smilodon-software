@@ -19,3 +19,4 @@ exclude:
   - SPEC.md
   - README.md
   - CHANGELOG.md
+  - designs/
