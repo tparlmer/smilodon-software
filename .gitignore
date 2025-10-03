@@ -1,2 +1,5 @@
 # Jekyll build
 _site
+/designs/*
+.jekyll-cache
+.sass-cache

@@ -1,6 +1,6 @@
 title: Smilodon Software
 description: Website for Smilodon Software client acquisition and blog
-baseurl: ""
+baseurl: "/smilodon-software"
 url: "https://tparlmer.github.io"
 
 theme: null
