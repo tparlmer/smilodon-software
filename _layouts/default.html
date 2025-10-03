@@ -11,5 +11,24 @@
     </head>
     <body>
         {% include navigation.html %} {{ content }} {% include footer.html%}
+        <script>
+            // Hide navbar on initial load for home page only
+            if (window.location.pathname === '{{ "/" | relative_url }}') {
+                const nav = document.querySelector("nav");
+                nav.style.transform = "translateY(-100%)";
+                nav.style.transition = "transform 0.3s ease";
+                nav.style.position = "absolute";
+                nav.style.width = "100%";
+
+                let hasScrolled = false;
+                window.addEventListener("scroll", function () {
+                    if (!hasScrolled && window.scrollY > 0) {
+                        nav.style.transform = "translateY(0)";
+                        nav.style.position = "static";
+                        hasScrolled = true;
+                    }
+                });
+            }
+        </script>
     </body>
 </html>

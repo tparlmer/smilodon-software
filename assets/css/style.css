@@ -141,7 +141,7 @@ time {
 }
 
 .tagline {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .tagline h2 {
@@ -156,7 +156,7 @@ time {
 
 .cta {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     padding: 0.75rem 1.5rem;
     color: #2e2e2e;
     background: transparent;
