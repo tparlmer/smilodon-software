@@ -294,7 +294,7 @@ footer {
 .container {
     max-width: 650px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem 2rem;
 }
 
 .post-list article {
@@ -305,6 +305,7 @@ footer {
 
 /* === BLOG POST PAGE === */
 .post-header {
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
