@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-## Software & AI Engineering
+## AI & Software Engineering
 
 We build unique and powerful software with our clients using human ingenuity and AI horsepower.
 
