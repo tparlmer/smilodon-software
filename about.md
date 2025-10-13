@@ -14,13 +14,6 @@ We build unique and powerful software with our clients using human ingenuity and
 - AI failure-mode risk mitigation
 - Antifragile software design
 
-## Capabilites
-
-We are able to write code in the following languages:
-- Go
-- Python
-- Typescript
-
 ## Get in Touch
 
 Interested in working together?
