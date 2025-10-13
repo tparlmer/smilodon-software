@@ -6,8 +6,6 @@ tags: [AI]
 excerpt: Why Smart Teams Are Building Vendor-Agnostic AI Infrastructure
 ---
 
-# Your AI Vendor Just Raised Prices 40%. Now What?
-
 ## Why Smart Teams Are Building Vendor-Agnostic AI Infrastructure
 
 There is no question that AI is revolutionary. Soon many people won't be able to do their jobs without it. Developers are already describing coding without AI as ["caveman coding"](https://arstechnica.com/ai/2025/09/developers-joke-about-coding-like-cavemen-as-ai-service-suffers-major-outage/). Customer support teams have offloaded functionality to AI agents. Some people won't make a decision without asking ChatGPT first. At every business, AI is somewhere between "very nice to have" and "MISSION CRITICAL."
