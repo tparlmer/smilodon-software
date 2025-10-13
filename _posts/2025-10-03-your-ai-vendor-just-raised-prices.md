@@ -104,7 +104,7 @@ The [mass exodus from Claude Code](https://www.aiengineering.report/p/devs-cance
 
 I help companies build vendor-resilient AI systems. If you're currently locked into a single provider and want to build resilience into your stack before the next crisis hits, let's talk.
 
-**[Schedule a 15-minute assessment call](https://calendly.com/smilodonsoftware/30min)** to identify your biggest AI risks and create a mitigation plan.
+**[Schedule a 30-minute assessment call](https://calendly.com/smilodonsoftware/30min)** to identify your biggest AI risks and create a mitigation plan.
 
 The question isn't whether your AI provider will let you down. It's whether you'll be ready when they do.
 
