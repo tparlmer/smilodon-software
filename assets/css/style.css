@@ -314,6 +314,13 @@ footer {
     line-height: 1.8;
 }
 
+.post-content > p:first-child img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 2rem;
+}
+
 .post-content h2 {
     margin-top: 2rem;
 }

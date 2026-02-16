@@ -3,8 +3,10 @@ layout: post
 title: "Cognitive Debt"
 date: 2026-02-16
 tags: [AI, Software Engineering]
-excerpt: "Cognitive debt describes what happens when you take shortcuts in your understanding of your code. AI-assisted development has made it possible to build sophisticated systems faster than any human can comprehend them."
+excerpt: "Build First - Understand Later"
 ---
+
+![Smilodon Software](/assets/images/smilodon-software.png)
 
 ## Elemental Idea
 
