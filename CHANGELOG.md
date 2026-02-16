@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-02-16
+
+### New Blog Post: Cognitive Debt
+- Added new blog post `_posts/2026-02-16-cognitive-debt.md` with front matter (layout, title, date, tags, excerpt)
+- Added kramdown table of contents (`{:toc}`) to the post
+- Added TOC CSS styling to `assets/css/style.css` targeting `#markdown-toc`
+
 ## 2025-09-29
 
 ### prototype-index.html Enhancements
