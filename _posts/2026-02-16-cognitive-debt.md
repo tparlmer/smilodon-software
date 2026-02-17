@@ -8,9 +8,9 @@ excerpt: "Build First - Understand Later"
 
 ![Smilodon Software](/assets/images/smilodon-software.png)
 
-## Elemental Idea
+## Build First - Understand Later
 
-Cognitive Debt is the gap between what your code does and what you understand about how it does it
+Cognitive Debt is the gap between what your code does and how well you understand it
 
 ## Abstract
 
