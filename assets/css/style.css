@@ -314,11 +314,23 @@ footer {
     line-height: 1.8;
 }
 
-.post-content > p:first-child img {
+.post-content figure {
+    margin: 0 0 2rem;
+    text-align: center;
+}
+
+.post-content figure img {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0 auto 2rem;
+    margin: 0 auto;
+}
+
+.post-content figcaption {
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+    margin-top: 0.5rem;
 }
 
 .post-content h2 {

@@ -7,6 +7,7 @@
 - Added kramdown table of contents (`{:toc}`) to the post
 - Added TOC CSS styling to `assets/css/style.css` targeting `#markdown-toc`
 - Added hero image (`smilodon-software.png`) at top of post with responsive styling
+- Added soft-grey italic caption beneath hero image
 
 ## 2025-09-29
 
