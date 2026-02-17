@@ -6,10 +6,7 @@ tags: [AI, Software Engineering]
 excerpt: "Build First - Understand Later"
 ---
 
-<figure>
-  <img src="/assets/images/smilodon-software.png" alt="Smiley the Sabertooth Cat at his computer">
-  <figcaption>Smiley the Sabertooth Cat attempts to understand the 8,000 lines of code he just generated</figcaption>
-</figure>
+![Smilodon Software](/assets/images/smilodon-software.png)
 
 ## Build First - Understand Later
 
