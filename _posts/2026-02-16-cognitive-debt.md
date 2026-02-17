@@ -7,6 +7,8 @@ excerpt: "Build First - Understand Later"
 ---
 
 ![Smilodon Software](/assets/images/smilodon-software.png)
+*Smiley the Sabertooth Cat attempts to understand the 8,000 lines of code he just generated*
+{: style="text-align: center; color: #999; font-size: 0.9rem;"}
 
 ## Build First - Understand Later
 
